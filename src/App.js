@@ -10,6 +10,8 @@ import CoursesScreen from "./components/screens/CoursesScreen";
 import TeacherRating from "./components/TeacherRating";
 import TeacherDetail from "./components/TeacherDetail";
 import Navbar from "./components/Navbar";
+import Register from "./components/screens/Register"; // Страница регистрации
+import Login from "./components/screens/Login"; // Страница авторизации
 import ContactScreen from "./components/screens/ContactScreen"; // Жаңа компонент импорттау
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -50,6 +52,8 @@ function App() {
             onAboutClick={() => setCurrentScreen("about")}
             onCoursesClick={() => setCurrentScreen("courses")}
             onContactClick={() => setCurrentScreen("contact")} // Жаңа батырма
+            onLogin={() => setCurrentScreen("login")}
+            onRegister={() => setCurrentScreen("register")}
           />
 
           {/* Content */}
@@ -62,6 +66,10 @@ function App() {
               <CoursesScreen />
             ) : currentScreen === "contact" ? ( // ContactScreen-ге бағыттау
               <ContactScreen />
+            ) : currentScreen === "login" ? ( // ContactScreen-ге бағыттау
+              <Login />
+            ) : currentScreen === "register" ? ( // ContactScreen-ге бағыттау
+              <Register />
             ) : isMeetingStarted ? (
               <MeetingProvider
                 config={{
