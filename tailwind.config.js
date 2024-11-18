@@ -1,45 +1,26 @@
 const colors = require("tailwindcss/colors");
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-  darkMode: false, // or 'media' or 'class'
-  mode: "jit",
+  mode: "jit", // Just-In-Time режимін қосу
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./public/index.html",  // Егер басқа да файлдарды қолдансаңыз оларды қосыңыз
+    "./index.css",  // Сіздің index.css файлыңыз
+  ],
   theme: {
-    colors: {
-      rose: colors.rose,
-      fuchsia: colors.fuchsia,
-      indigo: colors.indigo,
-      slate: colors.slate,
-      white: colors.white,
-      black: colors.black,
-      blue: colors.blue,
-      green: colors.green,
-      red: colors.red,
-      pink: colors.pink,
-    },
     extend: {
-      fontFamily: {
-        lato: ["lato", "sans-serif"],
-        sans: [
-          "lato",
-          "BlinkMacSystemFont",
-          "-apple-system",
-          "Segoe UI",
-          "Roboto",
-          "Oxygen",
-          "Ubuntu",
-          "Cantarell",
-          "Fira Sans",
-          "Droid Sans",
-          "Helvetica Neue",
-          "Helvetica",
-          "Arial",
-          "sans-serif",
-        ],
-        mono: ["Source Code Pro", "Menlo", "monospace"],
-      },
-
       colors: {
+        rose: colors.rose,
+        fuchsia: colors.fuchsia,
+        indigo: colors.indigo,
+        slate: colors.slate,
+        white: colors.white,
+        black: colors.black,
+        blue: colors.blue,
+        green: colors.green,
+        red: colors.red,
+        pink: colors.pink,
         gray: {
           50: "#555555",
           100: "#FFFFFF",
@@ -53,12 +34,11 @@ module.exports = {
           500: "#6F767E",
           600: "#404B53",
           650: "#202427",
-          700: "#232830", //"#26282C", //"#2B3034",
+          700: "#232830", 
           750: "#1A1C22",
           800: "#050A0E",
           850: "#26282C",
           900: "#95959E",
-
         },
         orange: {
           250: "#FF5810",
@@ -79,8 +59,8 @@ module.exports = {
         red: { 
           150: "#D32F2F",
           250: "#FF6262",
-          650: "#FF5D5D"
-         },
+          650: "#FF5D5D",
+        },
         pink: {
           150: "#EC4899",
           250: "#FFB5B5",
@@ -98,7 +78,6 @@ module.exports = {
         blue: {
           350: "#76d9e6",
         },
-        
         customGray: {
           100: "#252A34",
           150: "#31353B",
@@ -115,6 +94,26 @@ module.exports = {
           900: "#373C43",
         },
       },
+      fontFamily: {
+        lato: ["lato", "sans-serif"],
+        sans: [
+          "lato",
+          "BlinkMacSystemFont",
+          "-apple-system",
+          "Segoe UI",
+          "Roboto",
+          "Oxygen",
+          "Ubuntu",
+          "Cantarell",
+          "Fira Sans",
+          "Droid Sans",
+          "Helvetica Neue",
+          "Helvetica",
+          "Arial",
+          "sans-serif",
+        ],
+        mono: ["Source Code Pro", "Menlo", "monospace"],
+      },
     },
   },
   variants: {
@@ -122,13 +121,3 @@ module.exports = {
   },
   plugins: [],
 };
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}

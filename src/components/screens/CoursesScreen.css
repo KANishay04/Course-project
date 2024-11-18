@@ -1,0 +1,119 @@
+/* src/components/screens/CoursesScreen.css */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .courses-screen {
+    background: #f9f9f9;
+    color: #333;
+  }
+  .banner {
+    background: linear-gradient(to right, #3f7ae9, #00f2fe);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+  }
+  
+  .banner-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .banner h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  .banner p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .cta-button {
+    background-color: #fff;
+    color: #abb6b7;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .cta-button:hover {
+    background-color: #abb6b7;
+    color: #fff;
+  }
+  
+  /* Ерекшеліктер бөлімі */
+  .features-section {
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .features-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #444;
+  }
+  
+  .features {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .feature {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;  /* Контентті баған түрінде орналастыру */
+    justify-content: center;  /* Вертикалды ортаға қою */
+    align-items: center;      /* Горизонталды ортаға қою */
+  }
+  
+  .feature img {
+    width: 120px;
+    height: 120px;
+     border-radius: 50%;
+    margin-bottom: 15px;
+  }
+  
+  .feature h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .feature p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  /* Шақыру бөлімі */
+  .cta-section {
+    background: #3f7ae9;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    border-radius: 8px;
+  }
+  
+  .cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color:white;
+  }
+  
+  .cta-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
