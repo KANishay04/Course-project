@@ -1,129 +1,121 @@
 import { MeetingProvider } from "@videosdk.live/react-sdk";
 import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { MeetingAppProvider } from "./MeetingAppContextDef";
 import { MeetingContainer } from "./meeting/MeetingContainer";
 import { LeaveScreen } from "./components/screens/LeaveScreen";
 import { JoiningScreen } from "./components/screens/JoiningScreen";
-import HomeScreen from "./components/screens/HomeScreen";
+import HomeScreen from "./components/screens/HomeScreen"; // HomeScreen импортталады
 import AboutScreen from "./components/screens/AboutScreen";
 import CoursesScreen from "./components/screens/CoursesScreen";
+import ContactScreen from "./components/screens/ContactScreen";
 import TeacherRating from "./components/TeacherRating";
 import TeacherDetail from "./components/TeacherDetail";
 import Navbar from "./components/Navbar";
-import Register from "./components/screens/Register"; // Страница регистрации
-import Login from "./components/screens/Login"; // Страница авторизации
-import ContactScreen from "./components/screens/ContactScreen"; // Жаңа компонент импорттау
-import { BrowserRouter as Router } from "react-router-dom";
+import Register from "./components/screens/Register";
+import Login from "./components/screens/Login";
+import Profile from "./components/screens/Profile";
 
 function App() {
-  const [token, setToken] = useState("");
-  const [meetingId, setMeetingId] = useState("");
-  const [participantName, setParticipantName] = useState("");
-  const [micOn, setMicOn] = useState(false);
-  const [webcamOn, setWebcamOn] = useState(false);
-  const [customAudioStream, setCustomAudioStream] = useState(null);
-  const [customVideoStream, setCustomVideoStream] = useState(null);
-  const [isMeetingStarted, setMeetingStarted] = useState(false);
-  const [isMeetingLeft, setIsMeetingLeft] = useState(false);
-  const [currentScreen, setCurrentScreen] = useState("home");
+  const [token, setToken] = useState(""); // Токен
+  const [meetingId, setMeetingId] = useState(""); // Meeting ID
+  const [participantName, setParticipantName] = useState(""); // Қатысушының аты
+  const [micOn, setMicOn] = useState(false); // Микрофонның күйі
+  const [webcamOn, setWebcamOn] = useState(false); // Камераның күйі
+  const [customAudioStream, setCustomAudioStream] = useState(null); // Арнайы аудио ағымы
+  const [customVideoStream, setCustomVideoStream] = useState(null); // Арнайы бейне ағымы
+  const [isMeetingStarted, setMeetingStarted] = useState(false); // Meeting басталды ма?
+  const [isMeetingLeft, setIsMeetingLeft] = useState(false); // Meeting қалдырылды ма?
 
-  const isMobile = window.matchMedia(
-    "only screen and (max-width: 768px)"
-  ).matches;
-
+  const onClickStart = () => {
+    if (token && meetingId) { // Токен мен meeting ID бар-жоғын тексереміз
+      setMeetingStarted(true); // Meeting басталады
+    } else {
+      console.log("Token немесе Meeting ID дұрыс орнатылмаған");
+      
+    }
+  };
   useEffect(() => {
+    const isMobile = window.matchMedia("only screen and (max-width: 768px)").matches;
     if (isMobile) {
       window.onbeforeunload = () => {
         return "Are you sure you want to exit?";
       };
     }
-  }, [isMobile]);
+  }, []);
 
   return (
     <Router>
-      <div className="app">
-        <MeetingAppProvider>
+      <MeetingAppProvider>
+        <div className="app">
           {/* Navbar */}
-          <Navbar
-            onHomeClick={() => {
-              setCurrentScreen("home");
-              setMeetingStarted(false);
-            }}
-            onAboutClick={() => setCurrentScreen("about")}
-            onCoursesClick={() => setCurrentScreen("courses")}
-            onContactClick={() => setCurrentScreen("contact")} // Жаңа батырма
-            onLogin={() => setCurrentScreen("login")}
-            onRegister={() => setCurrentScreen("register")}
-          />
+          <Navbar />
 
-          {/* Content */}
-          <div className="content">
-            {currentScreen === "home" ? (
-              <HomeScreen onClickStart={() => setCurrentScreen("joining")} />
-            ) : currentScreen === "about" ? (
-              <AboutScreen />
-            ) : currentScreen === "courses" ? (
-              <CoursesScreen />
-            ) : currentScreen === "contact" ? ( // ContactScreen-ге бағыттау
-              <ContactScreen />
-            ) : currentScreen === "login" ? ( // ContactScreen-ге бағыттау
-              <Login />
-            ) : currentScreen === "register" ? ( // ContactScreen-ге бағыттау
-              <Register />
-            ) : isMeetingStarted ? (
-              <MeetingProvider
-                config={{
-                  meetingId,
-                  micEnabled: micOn,
-                  webcamEnabled: webcamOn,
-                  name: participantName || "TestUser",
-                  multiStream: true,
-                  customCameraVideoTrack: customVideoStream,
-                  customMicrophoneAudioTrack: customAudioStream,
-                }}
-                token={token}
-                reinitialiseMeetingOnConfigChange={true}
-                joinWithoutUserInteraction={true}
-              >
-                <MeetingContainer
-                  onMeetingLeave={() => {
-                    setToken("");
-                    setMeetingId("");
-                    setParticipantName("");
-                    setWebcamOn(false);
-                    setMicOn(false);
-                    setMeetingStarted(false);
-                  }}
-                  setIsMeetingLeft={setIsMeetingLeft}
-                />
-              </MeetingProvider>
-            ) : isMeetingLeft ? (
-              <LeaveScreen setIsMeetingLeft={setIsMeetingLeft} />
-            ) : (
-              <JoiningScreen
-                participantName={participantName}
-                setParticipantName={setParticipantName}
-                setMeetingId={setMeetingId}
-                setToken={setToken}
-                micOn={micOn}
-                setMicOn={setMicOn}
-                webcamOn={webcamOn}
-                setWebcamOn={setWebcamOn}
-                customAudioStream={customAudioStream}
-                setCustomAudioStream={setCustomAudioStream}
-                customVideoStream={customVideoStream}
-                setCustomVideoStream={setCustomVideoStream}
-                onClickStartMeeting={() => {
-                  setMeetingStarted(true);
-                }}
-                startMeeting={isMeetingStarted}
-                setIsMeetingLeft={setIsMeetingLeft}
-              />
-            )}
-          </div>
-          
-        </MeetingAppProvider>
-      </div>
+          {/* Routes */}
+          <Routes>
+            <Route path="/" element={<HomeScreen onClickStart={onClickStart} />} /> {/* HomeScreen-ге onClickStart функциясын өткіздік */}
+            <Route path="/about" element={<AboutScreen />} />
+            <Route path="/courses" element={<CoursesScreen />} />
+            <Route path="/contact" element={<ContactScreen />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/meeting"
+              element={
+                isMeetingStarted ? (
+                  <MeetingProvider
+                    config={{
+                      meetingId,
+                      micEnabled: micOn,
+                      webcamEnabled: webcamOn,
+                      name: participantName || "TestUser",
+                      multiStream: true,
+                      customCameraVideoTrack: customVideoStream,
+                      customMicrophoneAudioTrack: customAudioStream,
+                    }}
+                    token={token}
+                    reinitialiseMeetingOnConfigChange={true}
+                    joinWithoutUserInteraction={true}
+                  >
+                    <MeetingContainer
+                      onMeetingLeave={() => {
+                        setToken("");
+                        setMeetingId("");
+                        setParticipantName("");
+                        setWebcamOn(false);
+                        setMicOn(false);
+                        setMeetingStarted(false);
+                      }}
+                      setIsMeetingLeft={setIsMeetingLeft}
+                    />
+                  </MeetingProvider>
+                ) : isMeetingLeft ? (
+                  <LeaveScreen setIsMeetingLeft={setIsMeetingLeft} />
+                ) : (
+                  <JoiningScreen
+                    participantName={participantName}
+                    setParticipantName={setParticipantName}
+                    setMeetingId={setMeetingId}
+                    setToken={setToken}
+                    micOn={micOn}
+                    setMicOn={setMicOn}
+                    webcamOn={webcamOn}
+                    setWebcamOn={setWebcamOn}
+                    customAudioStream={customAudioStream}
+                    setCustomAudioStream={setCustomAudioStream}
+                    customVideoStream={customVideoStream}
+                    setCustomVideoStream={setCustomVideoStream}
+                    onClickStartMeeting={onClickStart} // Start meeting функциясын қосамыз
+                    startMeeting={isMeetingStarted}
+                    setIsMeetingLeft={setIsMeetingLeft}
+                  />
+                )
+              }
+            />
+          </Routes>
+        </div>
+      </MeetingAppProvider>
     </Router>
   );
 }

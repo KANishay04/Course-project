@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // React Router-дан useNavigate хукін қолданамыз
 import axios from 'axios';
 
 const Login = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
+    const navigate = useNavigate(); // Navigate функциясын аламыз
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -14,6 +16,7 @@ const Login = () => {
             const response = await axios.post('http://localhost:5000/api/auth/login', formData);
             localStorage.setItem('token', response.data.token);
             alert('Login successful');
+            navigate('/profile'); // Логин сәтті болса, профайл бетіне бағыттаймыз
         } catch (error) {
             alert(error.response?.data?.message || 'Login failed');
         }

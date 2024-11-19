@@ -2,7 +2,7 @@
   "name": "react-sdk-example",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lab.videosdk.live/react-rtc-demo/",
+  "homepage": "https://lab.videosdk.live/",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
     "@headlessui/react": "^1.7.17",

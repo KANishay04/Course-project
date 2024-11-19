@@ -1,5 +1,13 @@
 import React from "react";
 
+
+import MembershipImage from "../../images/membership.jpg";
+import CertificateImage from "../../images/certificate.jpg";
+import MentorImage from "../../images/mentor.png";
+import User1Image from "../../images/user1.jpg";
+import User2Image from "../../images/user2.jpg";
+import User3Image from "../../images/user3.jpg";
+
 function AboutScreen() {
   return (
     <div className="flex flex-col items-center p-6">
@@ -14,8 +22,7 @@ function AboutScreen() {
         {/* Get Certificate карточкасы */}
         <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
           <div className="mb-4">
-            {/* Сурет немесе иконка қосу */}
-            <img src="/path-to-icon/certificate-icon.png" alt="Certificate" className="w-12 h-12" />
+            <img src={MembershipImage} alt="Membership" className="w-16 h-16" />
           </div>
           <h3 className="text-xl font-semibold text-gray-700">Earn a Certificate</h3>
           <p className="text-gray-600 text-center mt-2">
@@ -26,8 +33,7 @@ function AboutScreen() {
         {/* Get Membership карточкасы */}
         <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
           <div className="mb-4">
-            {/* Сурет немесе иконка қосу */}
-            <img src="/path-to-icon/membership-icon.png" alt="Membership" className="w-12 h-12" />
+            <img src={CertificateImage} alt="Certificate" className="w-16 h-16" />
           </div>
           <h3 className="text-xl font-semibold text-gray-700">Join Our Membership</h3>
           <p className="text-gray-600 text-center mt-2">
@@ -35,11 +41,10 @@ function AboutScreen() {
           </p>
         </div>
 
-        {/* Become a Teacher карточкасы */}
+        {/* Become a Mentor карточкасы */}
         <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
           <div className="mb-4">
-            {/* Сурет немесе иконка қосу */}
-            <img src="/path-to-icon/teacher-icon.png" alt="Teacher" className="w-12 h-12" />
+            <img src={MentorImage} alt="Mentor" className="w-16 h-16" />
           </div>
           <h3 className="text-xl font-semibold text-gray-700">Become a Mentor</h3>
           <p className="text-gray-600 text-center mt-2">
@@ -55,17 +60,17 @@ function AboutScreen() {
           <h3 className="text-lg font-semibold text-gray-700">1K+ Skilled English Mentors</h3>
           <div className="flex flex-col space-y-2">
             <div className="flex items-center space-x-2">
-              <img src="/path-to-image/user1.jpg" alt="Ashton Agar" className="w-8 h-8 rounded-full" />
+              <img src={User1Image} alt="Ashton Agar" className="w-8 h-8 rounded-full" />
               <p>Ashton Agar</p>
               <span className="text-green-500">★★★★★</span>
             </div>
             <div className="flex items-center space-x-2">
-              <img src="/path-to-image/user2.jpg" alt="Ros Tylor" className="w-8 h-8 rounded-full" />
+              <img src={User2Image} alt="Ros Tylor" className="w-8 h-8 rounded-full" />
               <p>Ros Tylor</p>
               <span className="text-green-500">★★★★☆</span>
             </div>
             <div className="flex items-center space-x-2">
-              <img src="/path-to-image/user3.jpg" alt="Jacob William" className="w-8 h-8 rounded-full" />
+              <img src={User3Image} alt="Jacob William" className="w-8 h-8 rounded-full" />
               <p>Jacob William</p>
               <span className="text-green-500">★★★★★</span>
             </div>
