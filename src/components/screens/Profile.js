@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Profile = () => {
-  const [user, setUser] = useState({
+  const storedUser = JSON.parse(localStorage.getItem("user")) || {
     name: "John Doe",
     email: "johndoe@example.com",
     avatar: "https://via.placeholder.com/150",
-  });
+  };
 
+  const [user, setUser] = useState(storedUser);
   const [previewAvatar, setPreviewAvatar] = useState(user.avatar);
   const [isEditing, setIsEditing] = useState(false);
-  const [saved, setSaved] = useState(false); // Сақталғанын көрсету үшін жаңа күй
+  const [saved, setSaved] = useState(false);
+
+  useEffect(() => {
+    setPreviewAvatar(user.avatar);
+  }, [user]);
 
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
@@ -21,20 +26,20 @@ const Profile = () => {
   };
 
   const handleSaveProfile = () => {
-    setUser((prevUser) => ({
-      ...prevUser,
-      avatar: previewAvatar,
-    }));
+    const updatedUser = { ...user, avatar: previewAvatar };
+    setUser(updatedUser);
+    localStorage.setItem("user", JSON.stringify(updatedUser)); // Save to localStorage
     setIsEditing(false);
-    setSaved(true); 
-    setTimeout(() => setSaved(false), 3000); 
+    setSaved(true);
+
+    setTimeout(() => setSaved(false), 3000);
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 via-indigo-200 to-purple-200 text-gray-800 p-6">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <div className="flex flex-col items-center mb-6">
-          {/* Аватар */}
+          {/* Avatar */}
           <img
             src={previewAvatar}
             alt="User Avatar"
@@ -57,7 +62,7 @@ const Profile = () => {
           />
         </div>
 
-        {/* Аты-жөні */}
+        {/* Name */}
         <div className="mb-6">
           <label className="block text-gray-700 text-sm font-bold mb-2">Name</label>
           {isEditing ? (
@@ -74,7 +79,7 @@ const Profile = () => {
           )}
         </div>
 
-        {/* Электрондық пошта */}
+        {/* Email */}
         <div className="mb-6">
           <label className="block text-gray-700 text-sm font-bold mb-2">Email</label>
           {isEditing ? (
@@ -91,7 +96,7 @@ const Profile = () => {
           )}
         </div>
 
-        {/* Батырмалар */}
+        {/* Buttons */}
         {isEditing ? (
           <button
             onClick={handleSaveProfile}
@@ -108,7 +113,7 @@ const Profile = () => {
           </button>
         )}
 
-        {/* Сақталғанын көрсету */}
+        {/* Saved notification */}
         {saved && (
           <div className="mt-4 bg-green-100 text-green-700 px-4 py-2 rounded-lg shadow">
             Profile saved successfully!

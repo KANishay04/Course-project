@@ -28,8 +28,8 @@ function App() {
   const [isMeetingLeft, setIsMeetingLeft] = useState(false); // Meeting қалдырылды ма?
 
   const onClickStart = () => {
-    if (token && meetingId) { // Токен мен meeting ID бар-жоғын тексереміз
-      setMeetingStarted(true); // Meeting басталады
+    if (token && meetingId) { 
+      setMeetingStarted(true); 
     } else {
       console.log("Token немесе Meeting ID дұрыс орнатылмаған");
       

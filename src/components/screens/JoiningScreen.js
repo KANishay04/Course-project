@@ -97,7 +97,6 @@ export function JoiningScreen({
   useEffect(() => {
     if (webcamOn) {
 
-      // Close the existing video track if there's a new one
       if (videoTrackRef.current && videoTrackRef.current !== videoTrack) {
         videoTrackRef.current.stop(); // Stop the existing video track
       }
@@ -399,6 +398,7 @@ export function JoiningScreen({
   };
 
   return (
+    
     <div className="fixed inset-0">
       <div className="overflow-y-auto flex flex-col flex-1 h-screen bg-gray-800">
         <div className="flex flex-1 flex-col md:flex-row items-center justify-center md:m-[72px] m-16">
@@ -408,7 +408,7 @@ export function JoiningScreen({
                 <div className="flex items-center justify-center p-1.5 sm:p-4 lg:p-6">
                   <div className="relative w-full md:pl-4 sm:pl-10 pl-5  md:pr-4 sm:pr-10 pr-5">
                     <div className="w-full relative" style={{ height: "55vh" }}>
-                      <video
+                   <video
                         autoPlay
                         playsInline
                         muted

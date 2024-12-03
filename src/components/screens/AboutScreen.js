@@ -22,7 +22,7 @@ function AboutScreen() {
         {/* Get Certificate карточкасы */}
         <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
           <div className="mb-4">
-            <img src={MembershipImage} alt="Membership" className="w-16 h-16" />
+            <img src={MembershipImage} alt="Membership" className="w-20 h-20" />
           </div>
           <h3 className="text-xl font-semibold text-gray-700">Earn a Certificate</h3>
           <p className="text-gray-600 text-center mt-2">
@@ -33,7 +33,7 @@ function AboutScreen() {
         {/* Get Membership карточкасы */}
         <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
           <div className="mb-4">
-            <img src={CertificateImage} alt="Certificate" className="w-16 h-16" />
+            <img src={CertificateImage} alt="Certificate" className="w-20 h-20" />
           </div>
           <h3 className="text-xl font-semibold text-gray-700">Join Our Membership</h3>
           <p className="text-gray-600 text-center mt-2">
@@ -44,7 +44,7 @@ function AboutScreen() {
         {/* Become a Mentor карточкасы */}
         <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
           <div className="mb-4">
-            <img src={MentorImage} alt="Mentor" className="w-16 h-16" />
+            <img src={MentorImage} alt="Mentor" className="w-20 h-20" />
           </div>
           <h3 className="text-xl font-semibold text-gray-700">Become a Mentor</h3>
           <p className="text-gray-600 text-center mt-2">

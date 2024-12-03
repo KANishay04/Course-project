@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 
 function ContactScreen() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, email, message } = formData;
+
+    // WhatsApp URL схемасы
+    const whatsappNumber = "87778206242";
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
+    )}`;
+
+    // WhatsApp сілтемесін ашу
+    window.open(whatsappURL, "_blank");
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 via-indigo-200 to-purple-200 text-gray-800 p-6">
       <h1 className="text-4xl font-bold text-indigo-600 mb-4">Contact Us</h1>
@@ -8,12 +32,16 @@ function ContactScreen() {
         If you have any questions or need further information, please contact us!
       </p>
 
-      {/* Контакт формасы мен карта "Our Location"-ды жан-жақта орналастыру */}
       <div className="flex flex-col md:flex-row w-full max-w-screen-xl gap-12">
-        {/* Сол жақта форма */}
-        <form className="w-full md:w-1/2 bg-white p-8 rounded-lg shadow-lg space-y-6">
+        <form
+          className="w-full md:w-1/2 bg-white p-8 rounded-lg shadow-lg space-y-6"
+          onSubmit={handleSubmit}
+        >
           <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="name"
+            >
               Name
             </label>
             <input
@@ -21,10 +49,15 @@ function ContactScreen() {
               id="name"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 text-gray-700"
               placeholder="Your name"
+              value={formData.name}
+              onChange={handleChange}
             />
           </div>
           <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="email"
+            >
               Email
             </label>
             <input
@@ -32,16 +65,23 @@ function ContactScreen() {
               id="email"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 text-gray-700"
               placeholder="Your email"
+              value={formData.email}
+              onChange={handleChange}
             />
           </div>
           <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="message"
+            >
               Message
             </label>
             <textarea
               id="message"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 text-gray-700"
               placeholder="Your message"
+              value={formData.message}
+              onChange={handleChange}
             ></textarea>
           </div>
           <button
@@ -52,11 +92,11 @@ function ContactScreen() {
           </button>
         </form>
 
-        {/* Оң жақта карта мен мекенжай */}
         <div className="w-full md:w-1/2 space-y-12">
-          {/* Карта */}
           <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-xl font-semibold text-indigo-600 mb-4">Our Location</h2>
+            <h2 className="text-xl font-semibold text-indigo-600 mb-4">
+              Our Location
+            </h2>
             <div className="w-full h-64 rounded-lg overflow-hidden shadow-md">
               <iframe
                 title="Our Location"
@@ -69,13 +109,11 @@ function ContactScreen() {
               ></iframe>
             </div>
           </div>
-
-          {/* Мекенжай */}
           <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-xl font-semibold text-indigo-600 mb-4">Our Address</h2>
-            <p className="text-gray-700">
-              Zhandosova 55, Almaty, Kazakhstan
-            </p>
+            <h2 className="text-xl font-semibold text-indigo-600 mb-4">
+              Our Address
+            </h2>
+            <p className="text-gray-700">Zhandosova 55, Almaty, Kazakhstan</p>
             <p className="text-gray-700">Phone: +7 777 820 62 42</p>
             <p className="text-gray-700">Email: futureforge@gmail.com</p>
           </div>

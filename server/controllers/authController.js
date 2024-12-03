@@ -23,7 +23,6 @@ const registerUser = async (req, res) => {
     }
 };
 
-// Авторизация пользователя
 const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;

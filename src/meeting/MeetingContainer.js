@@ -27,7 +27,6 @@ export function MeetingContainer({
   const [participantsData, setParticipantsData] = useState([]);
 
   const ParticipantMicStream = memo(({ participantId }) => {
-    // Individual hook for each participant
     const { micStream } = useParticipant(participantId);
   
     useEffect(() => {

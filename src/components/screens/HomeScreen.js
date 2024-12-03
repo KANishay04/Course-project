@@ -7,8 +7,8 @@ function HomeScreen({ onClickStart }) {
   const navigate = useNavigate(); // navigate hook-ты қолданамыз
 
   const handleStartMeeting = () => {
-    navigate("/meeting"); // /meeting жолына өту
-    onClickStart(); // meeting бастау үшін onClickStart функциясын шақырамыз
+    navigate("/meeting"); 
+    onClickStart(); 
   };
 
   return (
