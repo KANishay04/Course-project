@@ -9,6 +9,8 @@ import HomeScreen from "./components/screens/HomeScreen"; // HomeScreen импо
 import AboutScreen from "./components/screens/AboutScreen";
 import CoursesScreen from "./components/screens/CoursesScreen";
 import ContactScreen from "./components/screens/ContactScreen";
+import PaymentScreen from "./components/screens/PaymentScreen";
+import StudentReviewsScreen from "./components/screens/StudentReviewsScreen";
 import TeacherRating from "./components/TeacherRating";
 import TeacherDetail from "./components/TeacherDetail";
 import Navbar from "./components/Navbar";
@@ -60,6 +62,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/payment" element={<PaymentScreen />} />
+            <Route path="/student-reviews" element={<StudentReviewsScreen />} />
             <Route
               path="/meeting"
               element={

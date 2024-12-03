@@ -1,10 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import GeneralEnglishImage from "../../images/general.png";
 import ClassicEnglishImage from "../../images/classic.png";
 import BusinessEnglishImage from "../../images/business.png";
 
 function CoursesScreen() {
+  const navigate = useNavigate();
+
+  const handleLearnMore = (course) => {
+    // Берілген курсқа байланысты төлем бетіне жіберу
+    navigate(`/payment?course=${course}`);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 via-indigo-200 to-purple-200 text-gray-800 flex flex-col items-center p-6">
       {/* Header */}
@@ -26,8 +34,11 @@ function CoursesScreen() {
           <p className="text-sm text-gray-700">
             Improve your communication skills with comprehensive lessons covering grammar, vocabulary, and real-life situations.
           </p>
-          <button className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold px-4 py-2 rounded-md transition duration-200">
-            More
+          <button
+            onClick={() => handleLearnMore("General English")}
+            className="mt-4 px-4 py-2 bg-indigo-500 text-white rounded-md shadow-md hover:bg-indigo-600 transition duration-300"
+          >
+            Buy now
           </button>
         </div>
 
@@ -42,8 +53,11 @@ function CoursesScreen() {
           <p className="text-sm text-gray-700">
             Master the timeless art of the English language with classic literature, poetry, and advanced linguistic techniques.
           </p>
-          <button className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold px-4 py-2 rounded-md transition duration-200">
-            More
+          <button
+            onClick={() => handleLearnMore("Classic English")}
+            className="mt-4 px-4 py-2 bg-indigo-500 text-white rounded-md shadow-md hover:bg-indigo-600 transition duration-300"
+          >
+            Buy now
           </button>
         </div>
 
@@ -58,8 +72,11 @@ function CoursesScreen() {
           <p className="text-sm text-gray-700">
             Enhance your professional communication with specialized lessons for meetings, presentations, and business correspondence.
           </p>
-          <button className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold px-4 py-2 rounded-md transition duration-200">
-            More
+          <button
+            onClick={() => handleLearnMore("Business English")}
+            className="mt-4 px-4 py-2 bg-indigo-500 text-white rounded-md shadow-md hover:bg-indigo-600 transition duration-300"
+          >
+            Buy now
           </button>
         </div>
       </section>

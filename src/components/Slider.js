@@ -2,6 +2,11 @@
 import React from "react";
 import Slider from "react-slick";
 
+// Суреттерді импорттау
+import image1 from "../images/image1.png";
+import image2 from "../images/image2.png";
+import image3 from "../images/image3.png";
+
 function ImageSlider() {
   const settings = {
     dots: true,
@@ -15,18 +20,9 @@ function ImageSlider() {
   };
 
   const slidesData = [
-    {
-      id: 1,
-      content: "Explore new topics with our expert teachers!",
-    },
-    {
-      id: 2,
-      content: "Join online meetings anytime, anywhere.",
-    },
-    {
-      id: 3,
-      content: "Gain new skills and advance your career!",
-    },
+    { id: 1, imageUrl: image1 },
+    { id: 2, imageUrl: image2 },
+    { id: 3, imageUrl: image3 },
   ];
 
   return (
@@ -34,9 +30,11 @@ function ImageSlider() {
       <Slider {...settings}>
         {slidesData.map((slide) => (
           <div key={slide.id} className="p-4">
-            <div className="bg-white text-blue-600 rounded-lg p-6 shadow-lg text-center">
-              {slide.content}
-            </div>
+            <img
+              src={slide.imageUrl}
+              alt={`Slide ${slide.id}`}
+              className="w-full h-auto rounded-lg shadow-lg"
+            />
           </div>
         ))}
       </Slider>

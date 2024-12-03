@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 
 import MembershipImage from "../../images/membership.jpg";
 import CertificateImage from "../../images/certificate.jpg";
@@ -9,9 +9,11 @@ import User2Image from "../../images/user2.jpg";
 import User3Image from "../../images/user3.jpg";
 
 function AboutScreen() {
+  const navigate = useNavigate(); // Навигация үшін хук
+
   return (
     <div className="flex flex-col items-center p-6">
-      {/* Негізгі тақырып */}
+      {}
       <h2 className="text-3xl font-bold text-gray-800 mb-2">Why Choose Future Forge for English Learning?</h2>
       <p className="text-gray-600 text-center mb-8">
         Master the art of English communication with our comprehensive courses tailored for all levels.
@@ -88,8 +90,11 @@ function AboutScreen() {
             <li>Personalized guidance</li>
             <li>Interactive language practice</li>
           </ul>
-          <button className="mt-4 bg-yellow-500 text-white py-2 px-4 rounded-lg">
-            Learn More
+          <button
+            className="mt-4 bg-yellow-500 text-white py-2 px-4 rounded-lg"
+            onClick={() => navigate("/student-reviews")} // Навигация батырмасы
+          >
+            Reviews
           </button>
         </div>
       </div>
